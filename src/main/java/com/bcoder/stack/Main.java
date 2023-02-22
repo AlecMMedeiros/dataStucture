@@ -4,14 +4,13 @@ public class Main {
 
   public static void main ( String[] args) {
 
-    Stack myStack = new Stack ();
+    Stack<String> myStack = new Stack <> ( );
 
-    myStack.push ( new Node ( 1 ) );
-    myStack.push ( new Node ( 2 ) );
-    myStack.push ( new Node ( 3 ) );
-    myStack.push ( new Node ( 4 ) );
-    myStack.push ( new Node ( 5 ) );
-    myStack.push ( new Node ( 6 ) );
+
+    myStack.push ( "First" );
+    myStack.push ( "Second" );
+    myStack.push ( "Third" );
+    myStack.push ( "Forth" );
 
     System.out.println (myStack );
 
@@ -19,16 +18,17 @@ public class Main {
 
     System.out.println (myStack );
 
-    myStack.push (new Node ( 1879 ));
+    myStack.push ("Almost Last");
 
     System.out.println (myStack );
 
-    myStack.pop();
+    // myStack.pop();
     System.out.println (myStack );
 
-    myStack.push (new Node ( 2005 ));
+    myStack.push ("Last");
 
     System.out.println (myStack );
+    System.out.println (myStack.top () );
 
   }
 

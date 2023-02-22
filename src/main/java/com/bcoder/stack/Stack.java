@@ -1,72 +1,67 @@
 package com.bcoder.stack;
 
-public class Stack {
-  private Node refEntryNode = null;
+public class Stack<T> {
+  private Node<T> refEntryNode;
 
-  public Stack ( ) {
+  public Stack() {
     this.refEntryNode = null;
   }
 
-  public void push(Node newNode) {
-    // Salva a referência atual para o topo da pilha em uma variável auxiliar
-    Node refAuxiliar = this.refEntryNode;
-    // Atualiza a referência para o topo da pilha para apontar para o novo nó
+  public void push(T data) {
+    // Create a new node with the specified data
+    Node<T> newNode = new Node<>(data);
+    // Save the current reference to the top of the stack in a temporary variable
+    Node<T> refAuxiliar = this.refEntryNode;
+    // Set the new node as the new top of the stack
     this.refEntryNode = newNode;
-    // Define a referência do novo nó para o nó que antes era o topo da pilha
+    // Set the reference of the new node to the previous top of the stack
     newNode.setRefNo(refAuxiliar);
   }
 
-  public Node pop() {
-    // Verifica se a pilha não está vazia
+  public T pop() {
     if (!this.isEmpty()) {
-      // Salva a referência para o nó atualmente no topo da pilha em uma variável
-      Node nodePoped = this.refEntryNode;
-      // Atualiza a referência para o topo da pilha para apontar para o segundo nó
+      // Get a reference to the node at the top of the stack
+      Node<T> nodePoped = this.refEntryNode;
+      // Set the next node in the stack as the new top of the stack
       this.refEntryNode = refEntryNode.getRefNode();
-      // Retorna a referência para o nó removido da pilha
-      return nodePoped;
+      // Return the data stored in the node that was removed from the top of the stack
+      return (T) nodePoped;
     }
-    // Se a pilha estiver vazia, retorna null
+    // If the stack is empty, return null
     return null;
   }
 
-
-  public Node top() {
-    return this.refEntryNode;
+  public T top() {
+    // Return the data stored in the node at the top of the stack
+    return this.refEntryNode.getData();
   }
-  public boolean isEmpty(){
-    if (this.refEntryNode == null) return true;
-    return false;
+
+  public boolean isEmpty() {
+    // Return true if the top of the stack is null (i.e., the stack is empty)
+    return this.refEntryNode == null;
+    // Otherwise, return false
   }
 
   @Override
   public String toString() {
-    // Cria a string de retorno inicial com o título "Pilha" e algumas linhas de separação
+    // Declare and initialize a string called stringReturn
     String stringReturn = "--------------\n";
     stringReturn += "    Stack\n";
     stringReturn += "--------------\n";
 
-    // Inicializa a variável de referência auxiliar com a referência para o topo da pilha
-    Node nodeAuxiliar = refEntryNode;
+    Node < T > nodeAuxiliar = refEntryNode;
 
-    // Itera sobre a pilha usando um laço "while"
+    // Loop through the stack and append each node's data to stringReturn
     while (true) {
-      // Verifica se o nó auxiliar é nulo
       if (nodeAuxiliar != null) {
-        // Adiciona a representação em texto do nó atual à string de retorno
-        stringReturn += "[Node{data=" + nodeAuxiliar.getData() + "}]\n";
-        // Atualiza a variável de referência auxiliar para apontar para o próximo nó
+        stringReturn += "[" + nodeAuxiliar.getData() + "]\n";
         nodeAuxiliar = nodeAuxiliar.getRefNode();
       } else {
-        // Se o nó auxiliar for nulo, todos os elementos da pilha foram processados
         break;
       }
     }
-
-    // Adiciona mais algumas linhas de separação à string de retorno
+    // Add a separator to stringReturn and return the final string
     stringReturn += "==============\n";
-    // Retorna a string de retorno
     return stringReturn;
   }
-
 }
