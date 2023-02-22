@@ -8,11 +8,11 @@ A data structure is a particular way of storing and organizing data in a compute
 
 ## What is the purpose of this repository?
 
-This repository is for learning and practicing different types of data structures. It contains code examples written in C++.
+This repository is for learning and practicing different types of data structures. It contains code examples written in Java.
 
 ## How to use this repository?
 
-You can clone this repository or download it as a zip file. Then, you can open the code files in your preferred editor or IDE. You can compile and run them using any C++ compiler.
+You can clone this repository or download it as a zip file. Then, you can open the code files in your preferred editor or IDE. You can compile and run them using any Java compiler.
 
 ## License
 
