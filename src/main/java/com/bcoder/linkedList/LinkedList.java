@@ -1,5 +1,7 @@
 package com.bcoder.linkedList;
 
+import com.bcoder.utils.LocalUtils;
+
 public class LinkedList< T > {
 
   private Node < T > refEntryNode;
@@ -10,14 +12,12 @@ public class LinkedList< T > {
   }
 
   // Throws an exception if the index is out of range
-  public void validateIndex ( int index ) {
-    if (index >= this.size ( )) throw new IndexOutOfBoundsException ( "Index out of range" );
-  }
+
 
   // Returns the node at the given index
   public Node < T > get ( int index ) {
     // Validate the index first
-    this.validateIndex ( index );
+    LocalUtils.validateIndex ( index, this.size () );
     // Start searching for the node from the entry node
     Node < T > nodeAuxiliary = this.refEntryNode;
     // Initialize a generic node as null
