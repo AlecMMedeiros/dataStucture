@@ -11,11 +11,11 @@ public class Stack<T> {
     // Create a new node with the specified data
     Node<T> newNode = new Node<>(data);
     // Save the current reference to the top of the stack in a temporary variable
-    Node<T> refAuxiliar = this.refEntryNode;
+    Node<T> refAuxiliary = this.refEntryNode;
     // Set the new node as the new top of the stack
     this.refEntryNode = newNode;
     // Set the reference of the new node to the previous top of the stack
-    newNode.setRefNo(refAuxiliar);
+    newNode.setRefNo(refAuxiliary);
   }
 
   public T pop() {
@@ -49,13 +49,13 @@ public class Stack<T> {
     stringReturn += "    Stack\n";
     stringReturn += "--------------\n";
 
-    Node < T > nodeAuxiliar = refEntryNode;
+    Node < T > nodeAuxiliary = refEntryNode;
 
     // Loop through the stack and append each node's data to stringReturn
     while (true) {
-      if (nodeAuxiliar != null) {
-        stringReturn += "[" + nodeAuxiliar.getData() + "]\n";
-        nodeAuxiliar = nodeAuxiliar.getRefNode();
+      if (nodeAuxiliary != null) {
+        stringReturn += "[" + nodeAuxiliary.getData() + "]\n";
+        nodeAuxiliary = nodeAuxiliary.getRefNode();
       } else {
         break;
       }

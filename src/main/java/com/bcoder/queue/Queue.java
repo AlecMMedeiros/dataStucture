@@ -28,16 +28,16 @@ public class Queue<T> {
       // Declare a variable called firstNo and initialize it to the refEntryNode
       Node<T> firstNo = this.refEntryNode;
       // Declare a variable called auxliarNode and initialize it to the refEntryNode
-      Node<T>auxliarNode = this.refEntryNode;
+      Node<T>auxliaryNode = this.refEntryNode;
       // Loop until the last node in the queue is found
       while (true) {
         // If the current node has a next node, set auxliarNode to the current node and firstNo to the next node
         if (firstNo.getRefNode() != null) {
-          auxliarNode = firstNo;
+          auxliaryNode = firstNo;
           firstNo = firstNo.getRefNode();
           // Otherwise, set the reference of the second-to-last node to null and break out of the loop
         } else {
-          auxliarNode.setRefNode(null);
+          auxliaryNode.setRefNode(null);
           break;
         }
       }
@@ -85,19 +85,19 @@ public class Queue<T> {
     stringReturn += "--------------\n";
 
     // Set a reference to the first node in the queue
-    Node<T> nodeAuxiliar = refEntryNode;
+    Node<T> nodeToStringAuxiliary = refEntryNode;
 
     // If the reference is not null, enter a loop that iterates over the nodes in the queue
-    if (nodeAuxiliar != null) {
+    if (nodeToStringAuxiliary != null) {
       while (true) {
         // If the current node has a next node, add the current node's data to stringReturn and set the reference to the next node
-        if (nodeAuxiliar.getRefNode() != null) {
-          stringReturn += "[" + nodeAuxiliar.getObject() + "], ";
-          nodeAuxiliar = nodeAuxiliar.getRefNode();
+        if (nodeToStringAuxiliary.getRefNode() != null) {
+          stringReturn += "[" + nodeToStringAuxiliary.getObject() + "], ";
+          nodeToStringAuxiliary = nodeToStringAuxiliary.getRefNode();
         }
         // If the current node does not have a next node, add its data to stringReturn with no trailing comma and break out of the loop
         else {
-          stringReturn += "[" + nodeAuxiliar.getObject() + "]";
+          stringReturn += "[" + nodeToStringAuxiliary.getObject() + "]";
           break;
         }
       }
