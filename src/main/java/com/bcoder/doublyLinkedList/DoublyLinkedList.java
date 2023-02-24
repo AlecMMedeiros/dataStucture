@@ -47,16 +47,16 @@ public class DoublyLinkedList <T> {
     }
 
     // get the node that currently occupies the given index
-    DoublyNode<T> noAuxiliar = getNo(index);
+    DoublyNode<T> nodeAuxiliary = getNo(index);
 
     // create a new node with the given data and index
     DoublyNode<T> newNode = new DoublyNode<>(data);
     newNode.setIndex(index);
-    newNode.setNextNode(noAuxiliar);
+    newNode.setNextNode(nodeAuxiliary);
 
     // if the new node is not the last node in the list, set its previous node to the previous node of the node it is replacing
     if (newNode.getNextNode() != null) {
-      newNode.setPreviousNode(noAuxiliar.getPreviousNode());
+      newNode.setPreviousNode(nodeAuxiliary.getPreviousNode());
       newNode.getNextNode().setPreviousNode(newNode);
     } else {  // if the new node is the last node in the list, set the exit node to the new node
       newNode.setPreviousNode(this.refExitNode);
@@ -75,19 +75,19 @@ public class DoublyLinkedList <T> {
   }
 
   public void remove(int index){
-    LocalUtils.validateIndex ( index, this.size () );
+    LocalUtils.validateIndex ( index, listSize);
     if(index == 0){
       this.refEntryNode = this.refEntryNode.getNextNode();
       if(this.refEntryNode != null){
         this.refEntryNode.setPreviousNode (null);
       }
     }else{
-      DoublyNode<T> noAuxiliar = getNo(index);
-      noAuxiliar.getPreviousNode ().setNextNode (noAuxiliar.getNextNode ());
-      if(noAuxiliar != this.refExitNode){
-        noAuxiliar.getNextNode ().setPreviousNode (noAuxiliar.getPreviousNode ());
+      DoublyNode<T> nodeAuxiliary = getNo(index);
+      nodeAuxiliary.getPreviousNode ().setNextNode (nodeAuxiliary.getNextNode ());
+      if(nodeAuxiliary != this.refExitNode){
+        nodeAuxiliary.getNextNode ().setPreviousNode (nodeAuxiliary.getPreviousNode ());
       }else{
-        this.refExitNode = noAuxiliar;
+        this.refExitNode = nodeAuxiliary;
       }
     }
     listSize--;
@@ -99,12 +99,12 @@ public class DoublyLinkedList <T> {
   }
 
   private DoublyNode<T> getNo(int index){
-    DoublyNode<T> noAuxiliar = this.refEntryNode;
+    DoublyNode<T> nodeAuxiliary = this.refEntryNode;
     // Traverse the list until the desired index or the end is reached
-    for(int i = 0; (i < index) && (noAuxiliar != null); i++){
-      noAuxiliar = noAuxiliar.getNextNode ();
+    for(int i = 0; (i < index) && (nodeAuxiliary != null); i++){
+      nodeAuxiliary = nodeAuxiliary.getNextNode ();
     }
-    return noAuxiliar;
+    return nodeAuxiliary;
   }
 
 
@@ -115,11 +115,11 @@ public class DoublyLinkedList <T> {
   @Override
   public String toString() {
     String strRetorno = "";
-    DoublyNode<T> noAuxiliar = this.refEntryNode;
+    DoublyNode<T> nodeAuxiliary = this.refEntryNode;
     // Traverse the list and concatenate the data of each node to a string
     for(int i = 0; i < size(); i++){
-      strRetorno += "[" + noAuxiliar.getData () +"]";
-      noAuxiliar = noAuxiliar.getNextNode ();
+      strRetorno += "[" + nodeAuxiliary.getData () +"]";
+      nodeAuxiliary = nodeAuxiliary.getNextNode ();
     }
     return strRetorno;
   }
