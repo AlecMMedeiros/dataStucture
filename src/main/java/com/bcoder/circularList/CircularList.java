@@ -51,7 +51,8 @@ public class CircularList< T > {
   }
 
   private Node < T > getNode ( int index ) { // private method to get a node given its index
-    LocalUtils.validateIndex ( index , this.size ( ) ); // check if the index is valid
+    if(isEmpty())
+      throw new IndexOutOfBoundsException("Empty List"); // check if the list is empty or not
 
     if (index == 0) { // if the index is 0, return the tail
       return this.tail;
@@ -76,16 +77,16 @@ public class CircularList< T > {
 
   @Override
   public String toString ( ) {
-    String strRetorno = "";
+    StringBuilder strRetorno = new StringBuilder ( );
     Node < T > nodeAuxiliary = this.tail;
     if (this.size ( ) != 0) {
       for ( int i = 0; i < size ( ); i++ ) {
-        strRetorno += "[" + nodeAuxiliary.getData ( ) + "]";
+        strRetorno.append ( "[" ).append ( nodeAuxiliary.getData ( ) ).append ( "]" );
         nodeAuxiliary = nodeAuxiliary.getNextNode ( );
       }
     } else {
-      strRetorno += "[]";
+      strRetorno.append ( "[]" );
     }
-    return strRetorno;
+    return strRetorno.toString ( );
   }
 }

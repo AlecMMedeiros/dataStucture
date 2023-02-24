@@ -18,6 +18,9 @@ public class Main {
     System.out.println (myList.get ( 0 ));
     System.out.println (myList.get ( 1 ));
     System.out.println (myList.get ( 2 ));
+    System.out.println (myList.get ( 3 ));
+    System.out.println (myList.get ( 4 ));
+    System.out.println (myList.get ( 5 ));
 
     System.out.println (myList);
 
